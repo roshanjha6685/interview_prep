@@ -99,8 +99,8 @@ export async function getLatestInterviews(
     .collection("interviews")
     .where("finalized", "==", true)
     .where("userId", "!=", userId)
-    .orderBy("userId")                 // 👈 Pehle orderBy userId
-    .orderBy("createdAt", "desc")       // 👈 Then orderBy createdAt
+    .orderBy("userId")
+    .orderBy("createdAt", "desc")
     .limit(limit)
     .get();
 
@@ -109,7 +109,6 @@ export async function getLatestInterviews(
     ...doc.data(),
   })) as Interview[];
 }
-
 
 export async function getInterviewsByUserId(
   userId: string
